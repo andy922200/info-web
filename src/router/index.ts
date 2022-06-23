@@ -6,12 +6,7 @@ const routes = [
     {
         path: '/',
         name: 'index',
-        component: () => import('../views/Dev.vue')
-    },
-    {
-        path: '/test',
-        name: 'test',
-        component: () => import('../views/Dev.vue')
+        component: () => import('../views/FoodInfo.vue')
     }
 ]
 

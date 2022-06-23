@@ -1,65 +1,45 @@
+<template>
+    <el-config-provider :locale="elementPlusLanguage">
+        <el-container>
+            <el-header>
+                <Navbar />
+            </el-header>
+            <el-main>
+                <!-- render route here -->
+                <router-view></router-view>
+            </el-main>
+        </el-container>
+    </el-config-provider>
+</template>
+
 <script lang="ts">
 import {
-    defineComponent, computed
+    defineComponent
 } from 'vue'
+import useStore from './store/index'
 import {
-    useI18n
-} from 'vue-i18n'
+    storeToRefs 
+} from 'pinia'
 import {
-    useRoute
-} from 'vue-router'
-import {
-    useMainStore 
-} from './store/modules/main'
-import {
-    LayoutLanguages, Locales
-} from './plugins/i18n/config/locales'
-import HelloWorld from './components/HelloWorld.vue'
+    ElConfigProvider 
+} from 'element-plus'
+import Navbar from './components/Navbar.vue'
 
 export default defineComponent({
     name: 'App',
     components: {
-        HelloWorld
+        ElConfigProvider,
+        Navbar
     },
     setup (){
-        const route = useRoute()
-        const mainStore = useMainStore()
-        const { locale } = useI18n()
-        const routeName = computed(()=>route.name?.valueOf().toString())
+        const { main } = useStore()
+        const { elementPlusLanguage } = storeToRefs(main)
 
         return {
-            selectedLanguageModel: computed({
-                get () {
-                    return mainStore.selectedLanguage
-                },
-                set (value: Locales){
-                    locale.value = value
-                    mainStore.setLanguage(value)
-                }
-            }),
-            LayoutLanguages,
-            routeName
+            elementPlusLanguage
         }
     }
 })
 </script>
-
-<template>
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <select v-model="selectedLanguageModel">
-        <option 
-            v-for="list in LayoutLanguages" 
-            :value="list.param" 
-            :key="list.param"
-        >{{list.title}}</option>
-    </select>
-    <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
-    <router-link :to="{name:'index'}">To Home</router-link>
-    <br>
-    <router-link :to="{name:'test'}">To Test</router-link>
-    <p v-if="routeName">{{$t(`${routeName}.title`)}}</p>
-    <!-- render route here -->
-    <router-view></router-view>
-</template>
 
 <style lang="scss" src="./styles/App.scss"></style>

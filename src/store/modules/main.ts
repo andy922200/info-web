@@ -12,6 +12,15 @@ import {
 } from '../../plugins/i18n/config'
 // vue-i18n end
 
+// element-plus-i18n start
+import {
+    ElementPlusLocales
+} from '../../plugins/i18n/config/elementPlusLocales'
+import {
+    Language 
+} from 'element-plus/es/locale'
+// element-plus-i18n-end
+
 const mainState = {
     today: dayjs(),
     selectedLanguage: defaultLocale
@@ -23,6 +32,11 @@ export type RootState = ReturnType<typeof IMainState>
 
 export const useMainStore = defineStore('main', {
     state: () => (mainState),
+    getters: {
+        elementPlusLanguage():Language{
+            return ElementPlusLocales[this.selectedLanguage]
+        }
+    },
     actions: {
         setToday(time: string) {
             this.today = dayjs(time)

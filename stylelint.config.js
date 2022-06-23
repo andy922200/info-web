@@ -17,6 +17,7 @@ module.exports = {
         'selector-class-pattern': null,
         'max-nesting-depth': 3,
         'selector-max-id': 2,
-        'indentation': 4
+        'indentation': 4,
+        'at-rule-no-unknown': null
     }
 }
