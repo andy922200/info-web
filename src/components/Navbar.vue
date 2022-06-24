@@ -1,7 +1,7 @@
 <template>
     <div class="navbar">
         <div class="lang-selector-wrapper">
-            <el-select v-model="selectedLanguageModel" placeholder="Select" class="lang-selector">
+            <el-select v-model="selectedLanguageModel" placeholder="Select" class="lang-selector" size="small">
                 <el-option
                     v-for="item in LayoutLanguages"
                     :key="item.param"
