@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
+    "ts-check": "vue-tsc --noEmit",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "check-css": "npx stylelint \"src/**/*.{scss,css,vue}\"",
@@ -10,7 +11,8 @@
     "lint-check": "npx eslint src --ext .js,.ts,tsx",
     "lint-fix": "npx eslint src --ext .js,.ts,tsx --fix",
     "test-jest": "npx jest",
-    "test-e2e": "testcafe chrome \"src/tests/e2e/*.e2e.test.ts\" --app \"npm run dev\" --app-init-delay 100 -S -s screenshots"
+    "test-e2e": "testcafe chrome \"src/tests/e2e/*.e2e.test.ts\" --app \"npm run dev\" --app-init-delay 100 -S -s screenshots",
+    "deploy-github": "sh ./deploy.sh"
   },
   "dependencies": {
     "axios": "^0.26.1",

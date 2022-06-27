@@ -2,9 +2,13 @@ import {
     defineStore 
 } from 'pinia'
 
+import {
+    apis 
+} from '../../apis/index'
+
 const detectLanguageState = {
     target: '',
-    result: ''
+    result: [] as Record<string, any>[]
 }
 
 // get the type of detectLanguageState
@@ -17,8 +21,17 @@ export const useDetectLanguageStore = defineStore('detectLanguage', {
         setTarget(input: string) {
             this.target = input.trim()
         },
-        setResult(payload: string) {
+        setResult(payload: Record<string, any>[]) {
             this.result = payload
+        },
+        async detectLangs(){
+            try{
+                const res = await apis.detectLangAPIs.detectTargetLang(this.target)
+
+                return res
+            }catch(err){
+                console.log(err)
+            } 
         }
     }
 })

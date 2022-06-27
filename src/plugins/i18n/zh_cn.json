@@ -1,8 +1,5 @@
 {
-    "index": {
-        "title": "这是首页"
-    },
-    "test": {
-        "title": "这是关于页"
+    "detectLanguages": {
+        "check-result": "你输入的内容为 {language} 文 | 你输入的内容或许为 {language} 文"
     }
 }

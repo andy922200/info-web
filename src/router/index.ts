@@ -6,7 +6,7 @@ const routes = [
     {
         path: '/',
         name: 'index',
-        component: () => import('../views/FoodInfo.vue')
+        component: () => import('../views/detectLangsApp.vue')
     }
 ]
 

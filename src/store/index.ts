@@ -6,7 +6,7 @@ import {
 } from './modules/main'
 import {
     useDetectLanguageStore 
-} from './modules/detactLanguages'
+} from './modules/detectLanguages'
 
 const useStore = () => ({
     demo: useDemoStore(),

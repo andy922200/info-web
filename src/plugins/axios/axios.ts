@@ -2,13 +2,17 @@ import axios, {
     AxiosRequestConfig, AxiosResponse 
 } from 'axios'
 
+export interface ICustomAxiosResponse extends AxiosResponse{
+    target: any
+}
+
 // create an axios instance
 export const createAxiosService = ({baseURL= '', token}:{baseURL: string, token: string }) => {
     const instance = axios.create({
-        baseURL: baseURL || `${import.meta.env.VITE_APP_BASE_DOMAIN}${import.meta.env.VITE_APP_BASE_API}`,
+        baseURL: baseURL || `${import.meta.env.VITE_APP_BASE_DOMAIN || ''}${import.meta.env.VITE_APP_BASE_API || ''}`,
         timeout: 10000,
         headers: {
-            'Content-Type': 'application/json;charset=utf-8',
+            'Content-Type': 'text/plain;charset=utf-8',
             'Authorization': `Bearer ${token}`
         }
     })

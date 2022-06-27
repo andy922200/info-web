@@ -13,6 +13,17 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
     base: process.env.NODE_ENV === 'production' ? '/info-web/' : './',
+    server: {
+        proxy: {
+            '/detectLang': {
+                target: 'https://ws.detectlanguage.com',
+                changeOrigin: true,
+                rewrite: (path) => {
+                    return path.replace(/^\/detectLang/, '')
+                }
+            },
+        }
+    },
     plugins: [
         vue(),
         legacy({

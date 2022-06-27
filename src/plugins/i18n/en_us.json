@@ -1,8 +1,5 @@
 {
-    "index": {
-        "title": "This is index page."
-    },
-    "test": {
-        "title": "This is about page."
+    "detectLanguages":{
+        "check-result": "Your input is in {language}. | Your input might be in {language}."
     }
 }
