@@ -11,6 +11,7 @@ declare module '*.vue' {
 
 interface ImportMetaEnv {
     readonly VITE_BASE_URL: string
+    readonly VITE_DetectLangToken: string
     // more env variables...
 }
 

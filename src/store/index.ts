@@ -4,10 +4,14 @@ import {
 import {
     useMainStore 
 } from './modules/main'
+import {
+    useDetectLanguageStore 
+} from './modules/detactLanguages'
 
 const useStore = () => ({
     demo: useDemoStore(),
-    main: useMainStore()
+    main: useMainStore(),
+    detectLanguage: useDetectLanguageStore()
 })
 
 export default useStore
