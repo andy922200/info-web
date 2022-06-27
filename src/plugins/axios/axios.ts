@@ -13,7 +13,8 @@ export const createAxiosService = ({baseURL= '', token}:{baseURL: string, token:
         timeout: 10000,
         headers: {
             'Content-Type': 'text/plain;charset=utf-8',
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${token}`,
+            'X-Requested-With': 'XMLHttpRequest'
         }
     })
 
