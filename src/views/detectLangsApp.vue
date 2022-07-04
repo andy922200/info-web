@@ -5,6 +5,7 @@
             :disabled="isLoading"
             placeholder="Please input"
             class="hahaha"
+            @keyup.enter="detectLang"
         >
             <template #suffix>
                 <el-icon class="el-input__icon">
@@ -54,10 +55,12 @@ export default defineComponent({
         let{ target, result } = storeToRefs(detectLanguage)
         const isLoading = ref(false)
         const detectLang = async ()=>{
+            isLoading.value = true
             const res = await detectLanguage.detectLangs()
             if(Array.isArray(res?.target.detections)){
                 result.value = res?.target.detections
             }
+            isLoading.value = false
         }
 
         return {
